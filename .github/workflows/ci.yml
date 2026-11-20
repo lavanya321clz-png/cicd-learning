@@ -1,0 +1,24 @@
+
+name: My First CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: First CI Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Display message
+        run: echo "Hello! My first CI pipeline is running."
+
+      - name: Check README file
+        run: test -f README.md && echo "README file found!"
